@@ -10,7 +10,8 @@ const normalizeMongoUri = (mongoUri) => {
     const dbName = parsed.pathname.replace(/^\//, "").split("?")[0];
 
     if (dbName) {
-      parsed.pathname = `/${dbName.toLowerCase()}`;
+      // Preserves the exact casing configured in your environment variables
+      parsed.pathname = `/${dbName}`;
       return parsed.toString();
     }
   } catch {
